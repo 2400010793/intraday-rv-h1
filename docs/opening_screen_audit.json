@@ -1,0 +1,98 @@
+{
+  "status": "complete",
+  "protocol_id": "INTRADAY-SSC-20260829",
+  "model": "small standalone log-vol Ridge; NOT attention retraining",
+  "ridge_mean_penalty": 0.001,
+  "fit_target_end_exclusive": "2024-03-01",
+  "validation_target_start": "2024-03-01",
+  "validation_target_end_exclusive": "2025-03-01",
+  "purge": "fit max target must precede first Validation origin",
+  "symbols": [
+    "IF",
+    "IH",
+    "IC",
+    "IM",
+    "159915",
+    "588000"
+  ],
+  "workers": 1,
+  "threads": 1,
+  "test_used_for_selection": false,
+  "source_sha256": "abf5a4fcff417c21e460d6a177c698668ca45c621675f9a3054a64ab93ef2cba",
+  "inputs": {},
+  "seconds": 37.78159402101301,
+  "audits": [
+    {
+      "symbol": "IF",
+      "fit_regular": 28675,
+      "fit_with_open": 29600,
+      "validation_common": 58563,
+      "validation_before_common": 58563,
+      "max_fit_target": "2024-02-28 14:58:00",
+      "first_validation_origin": "2024-02-29 09:29:00",
+      "seconds": 6.437963688978925,
+      "peak_rss_kib": 1489420,
+      "snapshot_sha256": "debbcca7351b3584c597ae7372d9a655c0549c49f5e28d07c9478e5033daf9de"
+    },
+    {
+      "symbol": "IH",
+      "fit_regular": 28675,
+      "fit_with_open": 29600,
+      "validation_common": 58563,
+      "validation_before_common": 58563,
+      "max_fit_target": "2024-02-28 14:58:00",
+      "first_validation_origin": "2024-02-29 09:29:00",
+      "seconds": 6.085941208992153,
+      "peak_rss_kib": 1917908,
+      "snapshot_sha256": "ad3a2518cfd861e99ade4e876d3d74de12ebe33432e523a1cddcab23bddbbdba"
+    },
+    {
+      "symbol": "IC",
+      "fit_regular": 28675,
+      "fit_with_open": 29600,
+      "validation_common": 58563,
+      "validation_before_common": 58563,
+      "max_fit_target": "2024-02-28 14:58:00",
+      "first_validation_origin": "2024-02-29 09:29:00",
+      "seconds": 5.94509614398703,
+      "peak_rss_kib": 1938192,
+      "snapshot_sha256": "dceed52c5686ad1039f80f5b9bb22debb52dd0df697dfad19838c454ba802c15"
+    },
+    {
+      "symbol": "IM",
+      "fit_regular": 28675,
+      "fit_with_open": 29600,
+      "validation_common": 58563,
+      "validation_before_common": 58563,
+      "max_fit_target": "2024-02-28 14:58:00",
+      "first_validation_origin": "2024-02-29 09:29:00",
+      "seconds": 5.916199820116162,
+      "peak_rss_kib": 1938624,
+      "snapshot_sha256": "ea7fd6e7fe7a0683562bc65df465a5296668be75606bbcb5adb9cdda96a09dcd"
+    },
+    {
+      "symbol": "159915",
+      "fit_regular": 27750,
+      "fit_with_open": 28675,
+      "validation_common": 57840,
+      "validation_before_common": 57840,
+      "max_fit_target": "2024-02-28 14:43:00",
+      "first_validation_origin": "2024-02-29 09:25:00",
+      "seconds": 5.808304785983637,
+      "peak_rss_kib": 1938624,
+      "snapshot_sha256": "fa22c7a272bdbe38e583fc6f61eea5d9acd50a210ae7b5e97bcd2fbb8b029c98"
+    },
+    {
+      "symbol": "588000",
+      "fit_regular": 21431,
+      "fit_with_open": 22145,
+      "validation_common": 57840,
+      "validation_before_common": 57840,
+      "max_fit_target": "2024-02-28 14:43:00",
+      "first_validation_origin": "2024-02-29 09:25:00",
+      "seconds": 4.928995669120923,
+      "peak_rss_kib": 1938624,
+      "snapshot_sha256": "233785698b7b12986e3d3f5d0e08c9998384a10d977ddb5dea3e99819ce70dd3"
+    }
+  ]
+}

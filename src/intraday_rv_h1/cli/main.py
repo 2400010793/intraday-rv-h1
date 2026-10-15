@@ -13,9 +13,11 @@ def main():
     p=argparse.ArgumentParser();sub=p.add_subparsers(dest='command',required=True)
     d=sub.add_parser('download');d.add_argument('--output',type=Path,required=True);d.add_argument('--start',required=True);d.add_argument('--end',required=True);d.add_argument('--evaluation',action='store_true')
     b=sub.add_parser('warmup');b.add_argument('--input',type=Path,required=True);b.add_argument('--bundle',type=Path,required=True);b.add_argument('--symbol',required=True);b.add_argument('--before',required=True);b.add_argument('--output',type=Path,required=True)
-    for command in ('replay','stream'):
+    for command in ('replay','stream','schedule'):
         r=sub.add_parser(command);r.add_argument('--bundle',type=Path,required=True);r.add_argument('--symbol',required=True);r.add_argument('--month',required=True);r.add_argument('--state',type=Path,required=True);r.add_argument('--output-state',type=Path,required=True)
-        if command=='replay':r.add_argument('--input',type=Path,required=True);r.add_argument('--output',type=Path,required=True)
+        if command in ('replay','schedule'):r.add_argument('--input',type=Path,required=True);r.add_argument('--output',type=Path,required=True)
+        if command=='schedule':
+            r.add_argument('--start',required=True);r.add_argument('--end',required=True);r.add_argument('--frequency',default='1min')
     e=sub.add_parser('evaluate');e.add_argument('--predictions',type=Path,required=True);e.add_argument('--targets',type=Path,required=True);e.add_argument('--thresholds',type=Path,required=True);e.add_argument('--columns',default='shampoo_e5,adam_e6,shampoo_e5_half0.5,adam_e6_half0.5');e.add_argument('--output',type=Path,required=True)
     a=p.parse_args()
     if a.command=='evaluate':
@@ -33,8 +35,14 @@ def main():
             if line.strip():print(json.dumps(engine.predict_step(json.loads(line)),allow_nan=False),flush=True)
     else:
         # The driver may hold the input day, but predict_step only receives one row.
-        frame=pd.read_parquet(a.input,columns=list(COLUMNS));out=[]
-        for row in frame.to_dict('records'):out.append(engine.predict_step(row))
+        import pyarrow.parquet as pq
+        available=set(pq.read_schema(a.input).names)
+        frame=pd.read_parquet(a.input,columns=[c for c in COLUMNS if c in available]);out=[]
+        if a.command=='schedule':
+            from intraday_rv_h1.inference.schedule import scheduled_replay
+            out=list(scheduled_replay(engine,frame.to_dict('records'),start=a.start,end=a.end,frequency=a.frequency))
+        else:
+            for row in frame.to_dict('records'):out.append(engine.predict_step(row))
         a.output.parent.mkdir(parents=True,exist_ok=True);pd.DataFrame(out).to_parquet(a.output,index=False)
     engine.save_state(a.output_state)
 

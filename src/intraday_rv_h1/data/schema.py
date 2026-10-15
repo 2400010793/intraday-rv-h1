@@ -22,3 +22,25 @@ def validate_row(row,symbol):
         if k in ('spotRef','rvol1D','rvol1hour') and math.isfinite(v) and v<=0:raise ValueError(f'positive or missing {k} required')
         supplied[k]=None if math.isnan(v) else v
     return supplied
+
+
+def validate_available_row(row,symbol):
+    """Tolerant numeric boundary; identity/time conflicts remain explicit errors.
+    Invalid numeric observations become missing with a diagnostic, never zero.
+    """
+    required={'usymbol','trade_date','datetime'}
+    missing=required-set(row)
+    if missing:raise ValueError(f'missing identity/time fields: {sorted(missing)}')
+    normalized={k:row.get(k) for k in COLUMNS};flags=[]
+    for key in COLUMNS[3:]:
+        if key not in row:flags.append('absent_'+key)
+        try:value=float(normalized[key]) if normalized[key] is not None else float('nan')
+        except (ValueError,TypeError,OverflowError):
+            value=float('nan');flags.append('invalid_'+key)
+        if math.isinf(value) or (key in ('spotRef','rvol1D','rvol1hour') and value<=0):
+            value=float('nan');flags.append('invalid_'+key)
+        normalized[key]=None if math.isnan(value) else value
+    # Strict identity/time validation, numeric fallback ttime checked separately.
+    ttime=normalized['ttime'];normalized['ttime']=0. if ttime is None else ttime
+    cooked=validate_row(normalized,symbol);cooked['ttime']=ttime
+    return cooked,flags

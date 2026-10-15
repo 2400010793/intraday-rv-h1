@@ -67,5 +67,5 @@ def test_missing_values_are_not_dropped(stream):
 
 def test_extension_failure_rolls_back_state(stream):
     e,rows=stream;s=copy.deepcopy(e.state)
-    with pytest.raises(ValueError):e.predict_step(dict(rows[0],ttime=None))
+    with pytest.raises(ValueError):e.predict_step(dict(rows[0],trade_date='2026-09-15'))
     assert e.state==s

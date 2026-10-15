@@ -90,7 +90,7 @@ model.save_state('data/state/IF_end.json')
 
 期货243行、ETF240行包含09:29/09:25。历史模型排除了首物理行，所以开盘补齐属于**新增输入策略**：计算当时已知的RV与已完成半变差，缺少注册项映射首个已训练clock的冻结参数；缺少前缀则延续该注册clock的历史有效特征。绝不读取当天后续clock的市场值。
 
-非法log默认延续同clock历史有效特征并标记。切线与 `asinh` 延拓作为可审计候选提供，必须经过8月底前对照才能启用；若没有足够证据则保持历史延续。没有合法历史、权重或注册表时初始化失败，不默默伪造预测。缺失clock本身需要调用方输入明确的缺失记录；不能声称对未收到的事件已产生预测。
+非法log默认延续同clock历史有效特征并标记。切线与 `asinh` 延拓作为可审计候选提供，必须经过8月底前对照才能启用；若没有足够证据则保持历史延续。没有合法历史、权重或注册表时初始化失败，不默默伪造预测。生产行驱动只覆盖收到的事件；需要无新数据也输出时，调用文末predict_at或schedule定时入口，输出明确标记为fallback。
 
 ## 结构与审计
 
@@ -121,3 +121,27 @@ python tools/package_models.py --bundle artifacts/export-new --output artifacts/
 ```
 
 模型的factory含冻结非持久化分位表，它属于拟合变换资产；任何权重和分位资产只在授权私有Release分发。禁止把本地history.json、原始价格表或数据连接秘密一起打包。
+
+## 保证请求时点有输出
+
+加载合法模型包与历史状态后，按标的、时间顺序调用：
+
+```python
+# 有新生产记录：使用当前记录更新真实特征后预测。
+result = model.predict_step(current_production_row)
+# 没有新生产记录：定时器仍可请求该时刻的输出。
+result = model.predict_at('2026-09-16 14:57:00')
+```
+
+`prediction_mode=model`表示执行了冻结网络；`fallback`表示延续上一预测，首次请求则使用历史合法RV参考。`forecast_origin_datetime`、`max_observed_datetime`、`stale_seconds`和`flags`使调用方能识别陈旧输出，不能把fallback称为新的市场信息预测。无新数据、未知clock、缺少ttime、数值失败都不会静默跳过。未知clock/定时器不插入合成收益或伪造特征历史。
+
+需要无人值守按分钟输出时，可用调度回放入口。它合并所有真实生产事件和定时刻；相同时刻优先真实记录。ETF14:57–14:59可以有定时输出，但仍没有这些时刻的真实生产行/标准目标。
+
+```bash
+intraday-rv-h1 schedule --bundle artifacts/models --symbol IF --month 2026-08 \
+  --state data/state/IF.json --input data/input-day/IF.parquet \
+  --start '2026-09-16 09:25:00' --end '2026-09-16 15:00:00' --frequency 1min \
+  --output reports/IF_scheduled.parquet --output-state data/state/IF_scheduled_end.json
+```
+
+保证对象是**有效身份、有效时间戳、按时间递增的请求**。错误日期、错标的、乱序、同键不同内容、缺失或损坏模型/历史资产仍明确报错；这些不能伪装成有效的新预测。同键重试幂等。初始化失败不属于运行中某个clock被跳过。

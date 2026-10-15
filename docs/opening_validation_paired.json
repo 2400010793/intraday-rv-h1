@@ -1,0 +1,42 @@
+{
+  "role": "exploratory Validation; shared calendar-date blocks preserve cross-asset dependence; no Test selection",
+  "bootstrap_replicates": 2000,
+  "results": [
+    {
+      "model": "include_opening",
+      "opening_rows": 1446,
+      "target_session_blocks": 241,
+      "mse": 0.007159288396101493,
+      "mse_change_vs_regular_only": -8.591140256406333e-05,
+      "mse_relative_improvement": 0.011857699573707652,
+      "paired_date_bootstrap_ci95": [
+        -0.00027097255695896665,
+        8.70942846691685e-05
+      ]
+    },
+    {
+      "model": "opening_interactions",
+      "opening_rows": 1446,
+      "target_session_blocks": 241,
+      "mse": 0.006778585525606741,
+      "mse_change_vs_regular_only": -0.000466614273058816,
+      "mse_relative_improvement": 0.06440323055614816,
+      "paired_date_bootstrap_ci95": [
+        -0.0011697095374034244,
+        0.00021465570758281798
+      ]
+    },
+    {
+      "model": "benchmark_replica_train",
+      "opening_rows": 1446,
+      "target_session_blocks": 241,
+      "mse": 0.0061006036237285155,
+      "mse_change_vs_regular_only": -0.0011445961749370426,
+      "mse_relative_improvement": 0.15797993247168393,
+      "paired_date_bootstrap_ci95": [
+        -0.002732478567168971,
+        -0.00011309194604042854
+      ]
+    }
+  ]
+}

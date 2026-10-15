@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import torch
-from intraday_rv_h1.data.schema import validate_row
+from intraday_rv_h1.data.schema import validate_row, validate_available_row
 from intraday_rv_h1.features.native import raw_features,midrank,extended_log
 from intraday_rv_h1.models.loader import build_model
 from intraday_rv_h1.state.storage import load_state as read_state,save_state as write_state
@@ -64,7 +64,7 @@ class Predictor:
                 val=s['today_'+name]
                 if val is not None:bisect.insort(s[name+'_history'],val)
             if olddate!=pd.Timestamp(s['previous_session']):
-                oldtime=pd.Timestamp(s['last_datetime'])
+                oldtime=pd.Timestamp(s.get('max_observed_datetime',s['last_datetime']))
                 if oldtime.strftime('%H:%M')=='15:00' and s['price_segment_valid']:
                     s['price_closes']=(s['price_closes']+[s['log_price']])[-80:]
             s.update(previous_session=s['date'],date=date.isoformat(),today_opening=None,today_overnight=None,observed_today=[],last_predictions={})
@@ -173,20 +173,91 @@ class Predictor:
             if not np.isfinite(a).all():raise FloatingPointError('nonfinite model input after explicit extensions')
         return args,flags,clock
 
+    def predict_at(self, timestamp):
+        """Scheduled output without inventing a production observation or feature row."""
+        dt=pd.Timestamp(timestamp)
+        return self.predict_step({'usymbol':self.symbol,'trade_date':dt.normalize().isoformat(),
+                                  'datetime':dt.isoformat()})
+
+    def _fallback(self,row,flags):
+        """Carry the latest forecast, or use the frozen historical RV before first output.
+        No synthetic row is inserted into feature histories. max_observed and
+        max_consumed distinguish model observations from scheduled requests.
+        """
+        s=copy.deepcopy(self.state);previous=s['last_predictions'];predictions={}
+        if previous:
+            predictions=copy.deepcopy(previous)
+            origin=s.get('last_forecast_origin_datetime',s['last_datetime'])
+            flags.append('previous_forecast_carried')
+        else:
+            clock=min(self.registry,key=lambda c:self.registry[c]['position'])
+            value=float(np.exp(.5*s['histories'][clock][-1][0]))
+            if not np.isfinite(value) or value<=0:raise ValueError('no valid historical fallback RV')
+            for opt in self.models:
+                name='shampoo_e5' if opt=='shampoo_adam_graft' else 'adam_e6'
+                predictions[name]=predictions[name+'_half0.5']=value
+            origin=s['last_datetime'];flags.append('historical_rv_fallback')
+        key=row['datetime'];dt=pd.Timestamp(key)
+        observed=s.get('max_observed_datetime',s['last_datetime'])
+        result={'symbol':self.symbol,'datetime':key,'clock_slot_id':dt.strftime('%H:%M')+'__scheduled',
+                'weight_month':self.month,'weight_version':self.version,'max_consumed_datetime':key,
+                'max_observed_datetime':observed,'forecast_origin_datetime':origin,
+                'stale_seconds':float((dt-pd.Timestamp(origin)).total_seconds()),
+                'prediction_mode':'fallback','flags':sorted(set(flags)),**predictions}
+        s.update(last_datetime=key,last_predictions=predictions,max_observed_datetime=observed,
+                 last_forecast_origin_datetime=origin)
+        return s,result
+
     def predict_step(self,row):
-        row=validate_row(row,self.symbol);dt=pd.Timestamp(row['datetime'])
-        key=row['datetime'];fingerprint=hashlib.sha256(json.dumps(row,sort_keys=True,allow_nan=False).encode()).hexdigest()
+        """Return one output per chronological timestamp, including numeric fallback."""
+        try:
+            return self._predict_step(row)
+        except (FloatingPointError,OverflowError) as exc:
+            normalized,input_flags=validate_available_row(row,self.symbol)
+            key=normalized['datetime']
+            if pd.Timestamp(key)<=pd.Timestamp(self.state['last_datetime']):raise
+            s,result=self._fallback(normalized,input_flags+['numeric_failure_fallback',type(exc).__name__])
+            fingerprint=hashlib.sha256(json.dumps({'row':normalized,'input_flags':input_flags},sort_keys=True,allow_nan=False).encode()).hexdigest()
+            s['retries'][key]={'fingerprint':fingerprint,'output':copy.deepcopy(result)}
+            self.state=s;self.last_args=None
+            return result
+
+    def _predict_step(self,row):
+        row,input_flags=validate_available_row(row,self.symbol);dt=pd.Timestamp(row['datetime'])
+        key=row['datetime'];fingerprint=hashlib.sha256(json.dumps({'row':row,'input_flags':input_flags},sort_keys=True,allow_nan=False).encode()).hexdigest()
         retries=self.state['retries']
         if key in retries:
             prior=retries[key]
-            if prior['fingerprint']!=fingerprint:raise ValueError('same timestamp with different production row')
+            legacy_fingerprint=hashlib.sha256(json.dumps(row,sort_keys=True,allow_nan=False).encode()).hexdigest()
+            if prior['fingerprint'] not in (fingerprint,legacy_fingerprint):raise ValueError('same timestamp with different production row')
             return copy.deepcopy(prior['output'])
         if dt<=pd.Timestamp(self.state['last_datetime']):raise ValueError('out-of-order production row')
-        # Work on a transaction copy. A failed feature/model update leaves state intact.
+        # Unknown physical events and incomplete records receive explicit fallback,
+        # without creating a pseudo-observation in any causal feature window.
+        same_day=dt.normalize()==pd.Timestamp(self.state['date']).normalize()
+        observed=self.state['observed_today'] if same_day else []
+        minute=dt.strftime('%H:%M')
+        occurrence=sum(pd.Timestamp(x['datetime']).strftime('%H:%M')==minute for x in observed)
+        clock=minute+'__'+str(occurrence)
+        opening='09:29' if self.asset<4 else '09:25'
+        canonical=(clock in self.registry or (minute==opening and not observed)) and dt.weekday()<5
+        fallback_flags=list(input_flags)
+        if not canonical:fallback_flags.append('unregistered_clock_fallback')
+        if row['ttime'] is None:fallback_flags.append('missing_ttime_fallback')
+        if all(row[k] is None for k in ('ret','ttime','spotRef','rvol1D','rvol1hour')):fallback_flags.append('no_production_observation')
+        if not canonical or row['ttime'] is None:
+            s,result=self._fallback(row,fallback_flags)
+            s['retries'][key]={'fingerprint':fingerprint,'output':copy.deepcopy(result)}
+            self.state=s;self.last_args=None
+            return result
+        # Work on a transaction copy. Failures never partially update histories.
         s=copy.deepcopy(self.state);args,flags,clock=self._features(s,row)
+        flags.extend(input_flags)
         tensors=[torch.from_numpy(np.ascontiguousarray(a)) for a in args];predictions={}
-        previous=self.state['last_predictions'];gap=(dt-pd.Timestamp(self.state['last_datetime'])).total_seconds()
-        linked=dt.normalize()==pd.Timestamp(self.state['last_datetime']).normalize() and 0<gap<=90
+        previous=self.state['last_predictions']
+        previous_origin=pd.Timestamp(self.state.get('last_forecast_origin_datetime',self.state['last_datetime']))
+        gap=(dt-previous_origin).total_seconds()
+        linked=dt.normalize()==previous_origin.normalize() and 0<gap<=90
         with torch.no_grad():
             for opt,models in self.models.items():
                 value=float(np.mean([m(*tensors)[0].item() for m in models]))
@@ -197,7 +268,9 @@ class Predictor:
                 predictions[name]=value;predictions[name+'_half0.5']=smoothed
         result={'symbol':self.symbol,'datetime':key,'clock_slot_id':clock,'weight_month':self.month,
             'weight_version':self.version,'max_consumed_datetime':key,'flags':sorted(set(flags)),**predictions}
+        result.update(prediction_mode='model',max_observed_datetime=key,forecast_origin_datetime=key,stale_seconds=0.)
         s['last_predictions']=predictions;s['last_datetime']=key
+        s['max_observed_datetime']=key;s['last_forecast_origin_datetime']=key
         s['retries'][key]={'fingerprint':fingerprint,'output':copy.deepcopy(result)}
         self.state=s;self.last_args=args
         return result

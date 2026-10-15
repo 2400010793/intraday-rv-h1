@@ -16,7 +16,7 @@ state.bootstrap → 历史状态 → inference.Predictor.predict_step(当前行)
 目标、benchmark ─────────→ evaluation.metrics（仅离线）
 ```
 
-`cli/main.py`是薄入口；下载/预热/流式/回放/离线评价分别调用所属模块。`models/archived`保留23个纯forward模块作为既有权重的依赖闭包，不把原实验driver或训练代码搬进推理包。模型构造与严格state_dict装载集中在loader。
+`cli/main.py`是薄入口；下载/预热/流式/回放/调度/离线评价分别调用所属模块。`inference/schedule.py`合并真实事件与定时请求；定时请求不写入生产特征历史。`models/archived`保留23个纯forward模块作为既有权重的依赖闭包，不把原实验driver或训练代码搬进推理包。模型构造与严格state_dict装载集中在loader。
 
 `tools/export_legacy.py`是唯一允许读取原研究源码的迁移边界；`tools/validate_migration.py`故意同时读取两套实现用于差分审计。二者不属于部署运行链。`tools/isolated_replay.py`中的驱动器可以读取整日输入，bwrap推理子进程只读管道当前行，二者的可见文件不同。
 

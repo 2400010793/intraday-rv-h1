@@ -37,3 +37,6 @@ python tools/isolated_replay.py --output artifacts/isolation-new
 5. 没有重新连接真实数据库做下载等价性审计，接口与字段说明已提供；取得当时版本和ETL规则前不能把新下载快照视为旧快照等价。
 
 因此GitHub源码可用于复核，模型资产只发布为私有**草稿研究Release**。不得据此自动部署生产，也不将“没有任何泄露”作为本次结论。
+
+
+2026-10-15更新：新增predict_at和schedule持续输出入口，六标的457唯一事件/定时点均通过，且原真实事件预测误差为0。数值缺失/异常不再直接拒绝该时点，而使用显式缺失处理或fallback；错误身份/时间、乱序、冲突和损坏初始化资产仍拒绝。开盘纳入Train拟合的独立小规模筛查见opening_clock_followup.md；没有修改生产权重。

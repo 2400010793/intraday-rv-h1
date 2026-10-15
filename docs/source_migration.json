@@ -1,0 +1,98 @@
+{
+  "origin_revision": "recorded in each asset export",
+  "modules": [
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.coefficient_scale",
+      "sha256": "ea30886547625e0e698847bd45f3272e1753d8b73db1b6177465b7a760502fb0"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.compact_prefix_attention",
+      "sha256": "3fdb3f0ddde8132495cf14d75f1fcae43d88c1f6b5b0e30a52053fb8de8401a2"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.directional_coefficient_attention",
+      "sha256": "7bfef18c336a0573af800bfb5289b35033c72b76cb2fa2cfc5446d0959cd56ae"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.group_initialized_attention",
+      "sha256": "e98909ad53bbf8b1de7e900cba006d250ad814f3cec8c00af3b288f99094a8c5"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.history_input_attention",
+      "sha256": "4de7d8ce6c5647563174b9a59f1a542bfef876a5cacc7f2aadc7969f70c7acb9"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.identity_token_attention",
+      "sha256": "0c753d2483a2970fcb3d48a6a21efd039933a1dade9b8e7f87eba174aec9aeca"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.joint_coefficient_attention",
+      "sha256": "8f5962cbbf19433ae0e16e19e54feb55e3d17e7e7a3134ca385cc0affa08c437"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.local_regime_attention",
+      "sha256": "e3746c54c805e5f471e79c55f05547b0ff4b1de8d202e2d7d1eb8e53971cfc12"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.local_token_attention",
+      "sha256": "b87d9b03b0ae75faf5ce7666087aca8c89e8ed6d908fc43dfbe628edee0ef05a"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.monthly_demo_attention",
+      "sha256": "d4d42295dc7f1a10a51501a9c973b563b3e01076daa73784a5bff55663a4c1b6"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.monthly_return_attention",
+      "sha256": "0829e60af72ccaa908b4e4d406a9551b307347873e437052f6ec1477f895f4a3"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.monthly_return_price_attention",
+      "sha256": "1ff4ef619528ab93a215bb02c7010e1308ad96f861a904d84499fc18b9a6d441"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.original_prefix_ablation",
+      "sha256": "9a9ebbe8f3bd5bb87cb2d38096813613f1c961fd5cdb1f65cfb62fce9dd8bbb8"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.percentile_refit",
+      "sha256": "8c39e45998aa528d03c2226c943a46c6c2893f80d76a4decf2a73093af5d212d"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.price_state_initialization",
+      "sha256": "3b3684b1746a1bcd8336d16610854e584a115f15b3d9dddd7cfc6e7a7365928b"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.return_onds_initialization",
+      "sha256": "1d949131136e780779a7e8ad1cdb39d8b25fcac1fd617b67237f3a88a56480bc"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.return_percentile_attention",
+      "sha256": "6268cde1a3ea1ef37aaf28d61a7ce253dd6bb4083312a8fd7351a23f1f07466e"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.same_clock",
+      "sha256": "0c27d2725f743dd546c31bd00533281c13b50db127ab2c2f712b0df1ba124dda"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.slope_state_attention",
+      "sha256": "901b598ff3e42c1fd9a6dbdff17164b589807d7dff6841caa25a1aca4e1e3bf6"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.stacked_coefficient_attention",
+      "sha256": "fdb45206403c3c881c504c00815896ff90ab415689a5743b046c9e657e3d04d6"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.structure_ablation_attention",
+      "sha256": "7bbcd130b520ef611138f6319030d35c518702900fbacacfd464b86f6b2340f8"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.svj_coefficient_conditioning",
+      "sha256": "207f1fc1eb4f4e8a8cf2beb5650e5ec5313638b74f2d94067eb2eadbe10cbe1d"
+    },
+    {
+      "module": "volatility_forecast.rv_predict.models.harnet.trainable_prefix_attention",
+      "sha256": "4604d4f692051b327beea1a6822389feaf54dcbdd208aff8a3b8e7ebbbd9f069"
+    }
+  ],
+  "external_imports": []
+}

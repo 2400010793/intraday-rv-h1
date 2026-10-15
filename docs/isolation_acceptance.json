@@ -1,0 +1,53 @@
+{
+  "status": "passed",
+  "results": [
+    {
+      "symbol": "IF",
+      "status": "passed",
+      "rows": 243,
+      "max_error": 0,
+      "seconds": 52.07901054411195,
+      "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
+    },
+    {
+      "symbol": "IH",
+      "status": "passed",
+      "rows": 243,
+      "max_error": 0,
+      "seconds": 51.81646739994176,
+      "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
+    },
+    {
+      "symbol": "IC",
+      "status": "passed",
+      "rows": 243,
+      "max_error": 0,
+      "seconds": 51.10688493098132,
+      "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
+    },
+    {
+      "symbol": "IM",
+      "status": "passed",
+      "rows": 243,
+      "max_error": 0,
+      "seconds": 50.729206749936566,
+      "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
+    },
+    {
+      "symbol": "159915",
+      "status": "passed",
+      "rows": 240,
+      "max_error": 0,
+      "seconds": 50.11261117900722,
+      "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
+    },
+    {
+      "symbol": "588000",
+      "status": "passed",
+      "rows": 240,
+      "max_error": 0,
+      "seconds": 50.143945248099044,
+      "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
+    }
+  ]
+}

@@ -1,0 +1,842 @@
+[
+  {
+    "symbol": "IF",
+    "month": "2025-02",
+    "max_fit_target_datetime": "2025-02-27 15:00:00",
+    "weight_count": 10,
+    "manifest": "IF/2025-02/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-03",
+    "max_fit_target_datetime": "2025-03-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-03/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-04",
+    "max_fit_target_datetime": "2025-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-04/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-05",
+    "max_fit_target_datetime": "2025-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-05/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-06",
+    "max_fit_target_datetime": "2025-06-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-06/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-07",
+    "max_fit_target_datetime": "2025-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-07/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-08",
+    "max_fit_target_datetime": "2025-08-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-08/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-09",
+    "max_fit_target_datetime": "2025-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-09/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-10",
+    "max_fit_target_datetime": "2025-10-09 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-10/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-11",
+    "max_fit_target_datetime": "2025-11-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-11/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2025-12",
+    "max_fit_target_datetime": "2025-12-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2025-12/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-01",
+    "max_fit_target_datetime": "2026-01-05 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-01/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-02",
+    "max_fit_target_datetime": "2026-02-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-02/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-03",
+    "max_fit_target_datetime": "2026-03-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-03/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-04",
+    "max_fit_target_datetime": "2026-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-04/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-05",
+    "max_fit_target_datetime": "2026-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-05/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-06",
+    "max_fit_target_datetime": "2026-06-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-06/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-07",
+    "max_fit_target_datetime": "2026-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-07/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-08",
+    "max_fit_target_datetime": "2026-08-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-08/manifest.json"
+  },
+  {
+    "symbol": "IF",
+    "month": "2026-09",
+    "max_fit_target_datetime": "2026-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IF/2026-09/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-02",
+    "max_fit_target_datetime": "2025-02-27 15:00:00",
+    "weight_count": 10,
+    "manifest": "IH/2025-02/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-03",
+    "max_fit_target_datetime": "2025-03-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-03/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-04",
+    "max_fit_target_datetime": "2025-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-04/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-05",
+    "max_fit_target_datetime": "2025-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-05/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-06",
+    "max_fit_target_datetime": "2025-06-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-06/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-07",
+    "max_fit_target_datetime": "2025-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-07/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-08",
+    "max_fit_target_datetime": "2025-08-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-08/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-09",
+    "max_fit_target_datetime": "2025-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-09/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-10",
+    "max_fit_target_datetime": "2025-10-09 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-10/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-11",
+    "max_fit_target_datetime": "2025-11-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-11/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2025-12",
+    "max_fit_target_datetime": "2025-12-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2025-12/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-01",
+    "max_fit_target_datetime": "2026-01-05 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-01/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-02",
+    "max_fit_target_datetime": "2026-02-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-02/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-03",
+    "max_fit_target_datetime": "2026-03-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-03/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-04",
+    "max_fit_target_datetime": "2026-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-04/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-05",
+    "max_fit_target_datetime": "2026-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-05/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-06",
+    "max_fit_target_datetime": "2026-06-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-06/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-07",
+    "max_fit_target_datetime": "2026-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-07/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-08",
+    "max_fit_target_datetime": "2026-08-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-08/manifest.json"
+  },
+  {
+    "symbol": "IH",
+    "month": "2026-09",
+    "max_fit_target_datetime": "2026-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IH/2026-09/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-02",
+    "max_fit_target_datetime": "2025-02-27 15:00:00",
+    "weight_count": 10,
+    "manifest": "IC/2025-02/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-03",
+    "max_fit_target_datetime": "2025-03-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-03/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-04",
+    "max_fit_target_datetime": "2025-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-04/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-05",
+    "max_fit_target_datetime": "2025-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-05/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-06",
+    "max_fit_target_datetime": "2025-06-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-06/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-07",
+    "max_fit_target_datetime": "2025-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-07/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-08",
+    "max_fit_target_datetime": "2025-08-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-08/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-09",
+    "max_fit_target_datetime": "2025-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-09/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-10",
+    "max_fit_target_datetime": "2025-10-09 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-10/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-11",
+    "max_fit_target_datetime": "2025-11-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-11/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2025-12",
+    "max_fit_target_datetime": "2025-12-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2025-12/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-01",
+    "max_fit_target_datetime": "2026-01-05 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-01/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-02",
+    "max_fit_target_datetime": "2026-02-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-02/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-03",
+    "max_fit_target_datetime": "2026-03-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-03/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-04",
+    "max_fit_target_datetime": "2026-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-04/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-05",
+    "max_fit_target_datetime": "2026-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-05/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-06",
+    "max_fit_target_datetime": "2026-06-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-06/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-07",
+    "max_fit_target_datetime": "2026-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-07/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-08",
+    "max_fit_target_datetime": "2026-08-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-08/manifest.json"
+  },
+  {
+    "symbol": "IC",
+    "month": "2026-09",
+    "max_fit_target_datetime": "2026-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IC/2026-09/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-02",
+    "max_fit_target_datetime": "2025-02-27 15:00:00",
+    "weight_count": 10,
+    "manifest": "IM/2025-02/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-03",
+    "max_fit_target_datetime": "2025-03-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-03/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-04",
+    "max_fit_target_datetime": "2025-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-04/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-05",
+    "max_fit_target_datetime": "2025-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-05/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-06",
+    "max_fit_target_datetime": "2025-06-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-06/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-07",
+    "max_fit_target_datetime": "2025-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-07/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-08",
+    "max_fit_target_datetime": "2025-08-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-08/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-09",
+    "max_fit_target_datetime": "2025-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-09/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-10",
+    "max_fit_target_datetime": "2025-10-09 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-10/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-11",
+    "max_fit_target_datetime": "2025-11-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-11/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2025-12",
+    "max_fit_target_datetime": "2025-12-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2025-12/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-01",
+    "max_fit_target_datetime": "2026-01-05 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-01/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-02",
+    "max_fit_target_datetime": "2026-02-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-02/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-03",
+    "max_fit_target_datetime": "2026-03-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-03/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-04",
+    "max_fit_target_datetime": "2026-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-04/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-05",
+    "max_fit_target_datetime": "2026-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-05/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-06",
+    "max_fit_target_datetime": "2026-06-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-06/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-07",
+    "max_fit_target_datetime": "2026-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-07/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-08",
+    "max_fit_target_datetime": "2026-08-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-08/manifest.json"
+  },
+  {
+    "symbol": "IM",
+    "month": "2026-09",
+    "max_fit_target_datetime": "2026-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "IM/2026-09/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-02",
+    "max_fit_target_datetime": "2025-02-27 15:00:00",
+    "weight_count": 10,
+    "manifest": "159915/2025-02/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-03",
+    "max_fit_target_datetime": "2025-03-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-03/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-04",
+    "max_fit_target_datetime": "2025-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-04/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-05",
+    "max_fit_target_datetime": "2025-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-05/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-06",
+    "max_fit_target_datetime": "2025-06-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-06/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-07",
+    "max_fit_target_datetime": "2025-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-07/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-08",
+    "max_fit_target_datetime": "2025-08-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-08/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-09",
+    "max_fit_target_datetime": "2025-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-09/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-10",
+    "max_fit_target_datetime": "2025-10-09 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-10/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-11",
+    "max_fit_target_datetime": "2025-11-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-11/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2025-12",
+    "max_fit_target_datetime": "2025-12-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2025-12/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-01",
+    "max_fit_target_datetime": "2026-01-05 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-01/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-02",
+    "max_fit_target_datetime": "2026-02-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-02/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-03",
+    "max_fit_target_datetime": "2026-03-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-03/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-04",
+    "max_fit_target_datetime": "2026-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-04/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-05",
+    "max_fit_target_datetime": "2026-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-05/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-06",
+    "max_fit_target_datetime": "2026-06-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-06/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-07",
+    "max_fit_target_datetime": "2026-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-07/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-08",
+    "max_fit_target_datetime": "2026-08-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-08/manifest.json"
+  },
+  {
+    "symbol": "159915",
+    "month": "2026-09",
+    "max_fit_target_datetime": "2026-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "159915/2026-09/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-02",
+    "max_fit_target_datetime": "2025-02-27 15:00:00",
+    "weight_count": 10,
+    "manifest": "588000/2025-02/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-03",
+    "max_fit_target_datetime": "2025-03-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-03/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-04",
+    "max_fit_target_datetime": "2025-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-04/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-05",
+    "max_fit_target_datetime": "2025-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-05/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-06",
+    "max_fit_target_datetime": "2025-06-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-06/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-07",
+    "max_fit_target_datetime": "2025-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-07/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-08",
+    "max_fit_target_datetime": "2025-08-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-08/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-09",
+    "max_fit_target_datetime": "2025-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-09/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-10",
+    "max_fit_target_datetime": "2025-10-09 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-10/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-11",
+    "max_fit_target_datetime": "2025-11-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-11/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2025-12",
+    "max_fit_target_datetime": "2025-12-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2025-12/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-01",
+    "max_fit_target_datetime": "2026-01-05 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-01/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-02",
+    "max_fit_target_datetime": "2026-02-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-02/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-03",
+    "max_fit_target_datetime": "2026-03-02 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-03/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-04",
+    "max_fit_target_datetime": "2026-04-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-04/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-05",
+    "max_fit_target_datetime": "2026-05-06 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-05/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-06",
+    "max_fit_target_datetime": "2026-06-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-06/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-07",
+    "max_fit_target_datetime": "2026-07-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-07/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-08",
+    "max_fit_target_datetime": "2026-08-03 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-08/manifest.json"
+  },
+  {
+    "symbol": "588000",
+    "month": "2026-09",
+    "max_fit_target_datetime": "2026-09-01 09:30:10",
+    "weight_count": 10,
+    "manifest": "588000/2026-09/manifest.json"
+  }
+]

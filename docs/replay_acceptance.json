@@ -1,0 +1,62 @@
+{
+  "date": "2026-09-16",
+  "fit_max_target_datetime": "2026-08-03 09:30:10",
+  "history_through": "2026-09-15",
+  "status": "downstream_day_replay_passed; full_production_acceptance_blocked",
+  "results": [
+    {
+      "status": "passed",
+      "symbol": "159915",
+      "rows": 240,
+      "expected_rows": 240,
+      "max_original_prediction_error": 9.992007221626409e-16,
+      "seconds": 72.46704304893501,
+      "flagged_rows": 1
+    },
+    {
+      "status": "passed",
+      "symbol": "588000",
+      "rows": 240,
+      "expected_rows": 240,
+      "max_original_prediction_error": 1.7763568394002505e-15,
+      "seconds": 71.65884489286691,
+      "flagged_rows": 1
+    },
+    {
+      "status": "passed",
+      "symbol": "IC",
+      "rows": 243,
+      "expected_rows": 243,
+      "max_original_prediction_error": 1.915134717478395e-15,
+      "seconds": 74.32548012910411,
+      "flagged_rows": 1
+    },
+    {
+      "status": "passed",
+      "symbol": "IF",
+      "rows": 243,
+      "expected_rows": 243,
+      "max_original_prediction_error": 2.6645352591003757e-15,
+      "seconds": 74.69180923700333,
+      "flagged_rows": 1
+    },
+    {
+      "status": "passed",
+      "symbol": "IH",
+      "rows": 243,
+      "expected_rows": 243,
+      "max_original_prediction_error": 8.326672684688674e-16,
+      "seconds": 75.26027267891914,
+      "flagged_rows": 1
+    },
+    {
+      "status": "passed",
+      "symbol": "IM",
+      "rows": 243,
+      "expected_rows": 243,
+      "max_original_prediction_error": 1.0269562977782698e-15,
+      "seconds": 73.75841055600904,
+      "flagged_rows": 1
+    }
+  ]
+}

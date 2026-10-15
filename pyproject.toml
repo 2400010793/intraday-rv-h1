@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "intraday-rv-h1"
+version = "0.1.0"
+description = "Frozen H1 HARNet inference from causal production rows"
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.23", "pandas>=2.0", "pyarrow>=10", "torch>=2.0", "pymysql>=1.0"]
+[project.optional-dependencies]
+test = ["pytest>=7"]
+[project.scripts]
+intraday-rv-h1 = "intraday_rv_h1.cli.main:main"
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+testpaths = ["tests"]

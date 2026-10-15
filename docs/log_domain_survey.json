@@ -1,0 +1,102 @@
+{
+  "scope": "2026-08-03 09:30:10 < origin < 2026-09-01; physical opening excluded",
+  "rows": [
+    {
+      "symbol": "IF",
+      "evaluation_rows": 5081,
+      "negative_variance": {
+        "epsilon": 0.00198863338850145,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      },
+      "log_argument": {
+        "epsilon": 0.4449823983923986,
+        "nonpositive": 25,
+        "below_epsilon": 242,
+        "nonfinite": 0
+      }
+    },
+    {
+      "symbol": "IH",
+      "evaluation_rows": 5081,
+      "negative_variance": {
+        "epsilon": 0.00199184574293803,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      },
+      "log_argument": {
+        "epsilon": 0.24182053317697788,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      }
+    },
+    {
+      "symbol": "IC",
+      "evaluation_rows": 5081,
+      "negative_variance": {
+        "epsilon": 0.0020007240172743726,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      },
+      "log_argument": {
+        "epsilon": 0.35831184597146704,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      }
+    },
+    {
+      "symbol": "IM",
+      "evaluation_rows": 5081,
+      "negative_variance": {
+        "epsilon": 0.0015413757333250728,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      },
+      "log_argument": {
+        "epsilon": 0.42964810389562547,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      }
+    },
+    {
+      "symbol": "159915",
+      "evaluation_rows": 5018,
+      "negative_variance": {
+        "epsilon": 0.003568399430409753,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      },
+      "log_argument": {
+        "epsilon": 0.3673048253987611,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      }
+    },
+    {
+      "symbol": "588000",
+      "evaluation_rows": 5018,
+      "negative_variance": {
+        "epsilon": 0.002900436959241854,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      },
+      "log_argument": {
+        "epsilon": 0.18845238808651327,
+        "nonpositive": 0,
+        "below_epsilon": 0,
+        "nonfinite": 0
+      }
+    }
+  ],
+  "selection": "carry retained; coverage is not an MSE/QLIKE/needle noninferiority test; alternative modes remain experimental and are not deployed"
+}

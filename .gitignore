@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.venv/
+/artifacts/
+/data/
+/reports/
+*.pt
+*.npy
+*.npz
+*.parquet
+.env
+/build/
+/dist/
+UNKNOWN.egg-info/

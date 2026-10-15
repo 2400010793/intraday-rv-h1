@@ -24,7 +24,7 @@ class Predictor:
         top=json.loads((self.root/'manifest.json').read_text())
         base=self.root/symbol;folder=base/month
         manifest_key=str((folder/'manifest.json').relative_to(self.root))
-        if manifest_key in top['files'] and top['files'][manifest_key]!=_sha(folder/'manifest.json'):raise ValueError('model manifest hash mismatch')
+        if top['files'].get(manifest_key)!=_sha(folder/'manifest.json'):raise ValueError('model manifest hash mismatch')
         self.manifest=json.loads((folder/'manifest.json').read_text())
         self.version=_sha(folder/'manifest.json')
         self.state=copy.deepcopy(state)
@@ -56,7 +56,7 @@ class Predictor:
     def save_state(self,path):write_state(path,self.state)
 
     def _features(self,s,row):
-        dt=pd.Timestamp(row['datetime']);date=dt.normalize();flags=[]
+        dt=pd.Timestamp(row['datetime']);date=dt.normalize();flags=[f'missing_{k}' for k in ('ret','spotRef','rvol1D','rvol1hour') if row[k] is None]
         olddate=pd.Timestamp(s['date'])
         if date>olddate:
             # Daily observations enter expanding CDFs only after their session.
@@ -90,7 +90,8 @@ class Predictor:
             # Opening has no intraday return. Use the completed trailing semivariance support.
             interior=features.loc[features.clock_position.gt(0),'ret'].to_numpy(float)
             width=242 if self.asset<4 else 239;rr=interior[-width:]
-            neg=260*np.where(rr<0,rr*rr,0.).sum();pos=260*np.where(rr>0,rr*rr,0.).sum()
+            neg=260*np.where(rr<0,rr*rr,0.).sum() if np.isfinite(rr).all() else np.nan
+            pos=260*np.where(rr>0,rr*rr,0.).sum() if np.isfinite(rr).all() else np.nan
             rv=float(row['rvol1D'])**2 if row['rvol1D'] is not None else np.nan
             with np.errstate(divide='ignore',invalid='ignore'):
                 core=np.array([np.log(rv),np.log(neg),np.log(1+(pos-neg)/rv)],np.float32)

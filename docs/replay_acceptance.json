@@ -10,7 +10,7 @@
       "rows": 240,
       "expected_rows": 240,
       "max_original_prediction_error": 9.992007221626409e-16,
-      "seconds": 72.46704304893501,
+      "seconds": 69.87503061397001,
       "flagged_rows": 1
     },
     {
@@ -19,7 +19,7 @@
       "rows": 240,
       "expected_rows": 240,
       "max_original_prediction_error": 1.7763568394002505e-15,
-      "seconds": 71.65884489286691,
+      "seconds": 72.24866475188173,
       "flagged_rows": 1
     },
     {
@@ -28,7 +28,7 @@
       "rows": 243,
       "expected_rows": 243,
       "max_original_prediction_error": 1.915134717478395e-15,
-      "seconds": 74.32548012910411,
+      "seconds": 72.62059409799986,
       "flagged_rows": 1
     },
     {
@@ -37,7 +37,7 @@
       "rows": 243,
       "expected_rows": 243,
       "max_original_prediction_error": 2.6645352591003757e-15,
-      "seconds": 74.69180923700333,
+      "seconds": 74.47147856396623,
       "flagged_rows": 1
     },
     {
@@ -46,7 +46,7 @@
       "rows": 243,
       "expected_rows": 243,
       "max_original_prediction_error": 8.326672684688674e-16,
-      "seconds": 75.26027267891914,
+      "seconds": 75.06267658807337,
       "flagged_rows": 1
     },
     {
@@ -55,8 +55,9 @@
       "rows": 243,
       "expected_rows": 243,
       "max_original_prediction_error": 1.0269562977782698e-15,
-      "seconds": 73.75841055600904,
+      "seconds": 74.36066550109535,
       "flagged_rows": 1
     }
-  ]
+  ],
+  "source_validation_run": "full-replay-v4"
 }

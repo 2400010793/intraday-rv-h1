@@ -1,0 +1,70 @@
+{
+  "status": "passed",
+  "weights": 1200,
+  "prediction_values": 5507900,
+  "maximum_error": 5.551115123125783e-16,
+  "all_rows": true,
+  "results": [
+    {
+      "status": "passed",
+      "symbol": "159915",
+      "weights": 200,
+      "full_rows": true,
+      "prediction_values": 910580,
+      "maximum_error": 3.3306690738754696e-16,
+      "seconds": 145.44935065391473,
+      "peak_rss_kib": 717384
+    },
+    {
+      "status": "passed",
+      "symbol": "588000",
+      "weights": 200,
+      "full_rows": true,
+      "prediction_values": 909680,
+      "maximum_error": 5.551115123125783e-16,
+      "seconds": 130.51404994516633,
+      "peak_rss_kib": 719372
+    },
+    {
+      "status": "passed",
+      "symbol": "IC",
+      "weights": 200,
+      "full_rows": true,
+      "prediction_values": 921940,
+      "maximum_error": 4.440892098500626e-16,
+      "seconds": 201.41215923707932,
+      "peak_rss_kib": 749288
+    },
+    {
+      "status": "passed",
+      "symbol": "IF",
+      "weights": 200,
+      "full_rows": true,
+      "prediction_values": 921710,
+      "maximum_error": 4.440892098500626e-16,
+      "seconds": 204.06685515400022,
+      "peak_rss_kib": 750276
+    },
+    {
+      "status": "passed",
+      "symbol": "IH",
+      "weights": 200,
+      "full_rows": true,
+      "prediction_values": 921980,
+      "maximum_error": 4.440892098500626e-16,
+      "seconds": 222.49089082190767,
+      "peak_rss_kib": 740344
+    },
+    {
+      "status": "passed",
+      "symbol": "IM",
+      "weights": 200,
+      "full_rows": true,
+      "prediction_values": 922010,
+      "maximum_error": 4.440892098500626e-16,
+      "seconds": 197.6538645469118,
+      "peak_rss_kib": 750400
+    }
+  ],
+  "scope": "all six assets, 20 monthly refits, two optimizers, five seeds; archived model tensor input closure, separate from raw-row feature replay"
+}

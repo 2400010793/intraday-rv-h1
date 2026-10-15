@@ -40,3 +40,11 @@ def test_schema_does_not_consume_labels_or_benchmark():
     assert validate_row(row,'IF')==one
     row['datetime']='2026-08-04 09:29:00'
     with pytest.raises(ValueError,match='matching trade_date'):validate_row(row,'IF')
+
+
+def test_missing_return_is_not_zero_semivariance():
+    times=pd.date_range('2026-08-03 09:29:00',periods=500,freq='min')
+    f=pd.DataFrame({'usymbol':'IF','trade_date':times.normalize(),'datetime':times,'ret':np.where(np.arange(500)%2, .001,-.001),'ttime':np.arange(500,dtype=float),'spotRef':4000.,'rvol1D':.2,'rvol1hour':.2})
+    f.loc[490,'ret']=np.nan
+    out=raw_features(f,'IF')
+    assert np.isnan(out.core1.iloc[-1]) and np.isnan(out.core2.iloc[-1])

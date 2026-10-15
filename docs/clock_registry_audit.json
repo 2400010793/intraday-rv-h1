@@ -1,0 +1,49 @@
+{
+  "status": "passed_effective_inputs",
+  "purpose": "clock/time/group mappings and consumed auxiliary masks equal pre-Test fit-only reconstruction",
+  "excluded_slots": "first two legacy auxiliary masks are overwritten by current causal policy; differences disclosed, never used",
+  "results": [
+    {
+      "symbol": "IF",
+      "clock_entries": 242,
+      "effective_equivalence_to_fit_only_registry": true,
+      "unused_replaced_policy_mask_differences": 2,
+      "maximum_first_fit_row_used": "2021-03-18 10:30:00"
+    },
+    {
+      "symbol": "IH",
+      "clock_entries": 242,
+      "effective_equivalence_to_fit_only_registry": true,
+      "unused_replaced_policy_mask_differences": 8,
+      "maximum_first_fit_row_used": "2021-03-18 10:30:00"
+    },
+    {
+      "symbol": "IC",
+      "clock_entries": 242,
+      "effective_equivalence_to_fit_only_registry": true,
+      "unused_replaced_policy_mask_differences": 13,
+      "maximum_first_fit_row_used": "2021-03-18 10:30:00"
+    },
+    {
+      "symbol": "IM",
+      "clock_entries": 242,
+      "effective_equivalence_to_fit_only_registry": true,
+      "unused_replaced_policy_mask_differences": 35,
+      "maximum_first_fit_row_used": "2021-03-18 10:30:00"
+    },
+    {
+      "symbol": "159915",
+      "clock_entries": 239,
+      "effective_equivalence_to_fit_only_registry": true,
+      "unused_replaced_policy_mask_differences": 8,
+      "maximum_first_fit_row_used": "2021-03-23 09:30:10"
+    },
+    {
+      "symbol": "588000",
+      "clock_entries": 239,
+      "effective_equivalence_to_fit_only_registry": true,
+      "unused_replaced_policy_mask_differences": 3,
+      "maximum_first_fit_row_used": "2021-03-18 15:00:00"
+    }
+  ]
+}

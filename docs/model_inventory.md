@@ -1,6 +1,6 @@
 # 模型清单及历史同样本指标
 
-保留Shampoo epoch5 / Adam epoch6，各5固定seed：7、17、27、37、47。20个月（2025-02至2026-09）×6标的×2×5，共1200份权重。逐月真实标签截止与相对路径见monthly_asset_index.json；每个模型包子目录manifest包含原checkpoint和移植state_dict SHA256。拟合参数、冻结分位、归一化和clock注册表一并保存。历史状态单独本地保存，不上传。
+保留Shampoo epoch5 / Adam epoch6，各5固定seed：7、17、27、37、47。20个月（2025-02至2026-09）×6标的×2×5，共1200份权重。逐月真实标签截止与相对路径见monthly_asset_index.json；每个模型包子目录manifest包含原checkpoint和移植state_dict SHA256。拟合参数、冻结分位、归一化和clock注册表一并保存。历史状态单独本地保存，不上传。全部1200份权重在归档张量输入上的5,507,900个预测值已完整复现，最大绝对误差5.552e−16，见archive_acceptance.json。
 
 以下为已有研究报告的**原共同有效样本**重新汇总，不是9月16日新增首clock的成绩，也不是新进行的未触碰Test实验。模型/epoch沿用既有指定，未重新从Test挑选。单个seed与五seed平均是不同口径；在线输出为五seed平均。
 

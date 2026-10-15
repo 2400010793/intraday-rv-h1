@@ -37,12 +37,13 @@ def raw_features(raw,symbol):
     f['clock_slot_id']=minute+'__'+occurrence.astype(str)
     interior=f.clock_position.gt(0);p=f.loc[interior].copy();r=p.ret.to_numpy(float)
     width=242 if symbol in ('IF','IH','IC','IM') else 239
-    negative=pd.Series(260*np.where(r<0,r*r,0.),index=p.index)
-    positive=pd.Series(260*np.where(r>0,r*r,0.),index=p.index)
+    negative=pd.Series(260*np.where(np.isfinite(r),np.where(r<0,r*r,0.),np.nan),index=p.index)
+    positive=pd.Series(260*np.where(np.isfinite(r),np.where(r>0,r*r,0.),np.nan),index=p.index)
     neg=negative.rolling(width,min_periods=width).sum();pos=positive.rolling(width,min_periods=width).sum()
     close=p.datetime.dt.strftime('%H:%M').eq('15:00')
-    neg.loc[close]=negative.groupby(p.date,sort=False).cumsum().loc[close]
-    pos.loc[close]=positive.groupby(p.date,sort=False).cumsum().loc[close]
+    complete=negative.notna().groupby(p.date,sort=False).cummin()
+    neg.loc[close]=negative.groupby(p.date,sort=False).cumsum().where(complete).loc[close]
+    pos.loc[close]=positive.groupby(p.date,sort=False).cumsum().where(complete).loc[close]
     rv=p.rvol1D.pow(2);arg=1+(pos-neg)/rv.where(rv>0)
     with np.errstate(divide='ignore',invalid='ignore'):
         p['core0']=np.log(rv.where(rv>0));p['core1']=np.log(neg.where(neg>0));p['core2']=np.log(arg.where(arg>0))

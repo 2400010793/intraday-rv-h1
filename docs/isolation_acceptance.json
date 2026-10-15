@@ -6,7 +6,7 @@
       "status": "passed",
       "rows": 243,
       "max_error": 0,
-      "seconds": 52.07901054411195,
+      "seconds": 52.117555203149095,
       "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
     },
     {
@@ -14,7 +14,7 @@
       "status": "passed",
       "rows": 243,
       "max_error": 0,
-      "seconds": 51.81646739994176,
+      "seconds": 53.75409674504772,
       "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
     },
     {
@@ -22,7 +22,7 @@
       "status": "passed",
       "rows": 243,
       "max_error": 0,
-      "seconds": 51.10688493098132,
+      "seconds": 52.12132750498131,
       "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
     },
     {
@@ -30,7 +30,7 @@
       "status": "passed",
       "rows": 243,
       "max_error": 0,
-      "seconds": 50.729206749936566,
+      "seconds": 51.36297354497947,
       "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
     },
     {
@@ -38,7 +38,7 @@
       "status": "passed",
       "rows": 240,
       "max_error": 0,
-      "seconds": 50.11261117900722,
+      "seconds": 50.66076712496579,
       "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
     },
     {
@@ -46,7 +46,7 @@
       "status": "passed",
       "rows": 240,
       "max_error": 0,
-      "seconds": 50.143945248099044,
+      "seconds": 50.664027200080454,
       "isolation": "bwrap: research checkout and full input tables not mounted; network disabled"
     }
   ]

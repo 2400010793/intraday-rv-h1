@@ -1,7 +1,7 @@
 """Bounded two-process migration validation; logs/status persist on failure."""
 import concurrent.futures,json,os,subprocess,sys,time
 from pathlib import Path
-root=Path(__file__).resolve().parents[1];output=root/'artifacts/full-replay-v1';output.mkdir(parents=True,exist_ok=False)
+root=Path(__file__).resolve().parents[1];output=Path(os.environ.get('H1_AUDIT_OUTPUT',str(root/'artifacts/full-replay-v1')));output.mkdir(parents=True,exist_ok=False)
 # Each child reads one symbol; no shared full-panel copies.
 symbols=('IF','IH','IC','IM','159915','588000')
 source=os.environ['H1_LEGACY_SOURCE'];bundle=os.environ['H1_BUNDLE']

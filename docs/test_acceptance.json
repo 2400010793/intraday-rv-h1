@@ -1,12 +1,12 @@
 {
   "command": "OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 .venv/bin/python -m pytest -q",
   "cwd": "independent repository root",
-  "passed": 13,
+  "passed": 15,
   "skipped": 0,
   "environment": "docs/environment.json",
   "package": "wheel installed; no source PYTHONPATH",
   "source_hashes": "docs/source_hashes.json",
-  "seconds": 11.03,
+  "seconds": 13.41,
   "warnings": [
     "bottleneck installed1.3.5, pandas recommends>=1.3.6",
     "pandas private BlockManager deprecation in library copy path"

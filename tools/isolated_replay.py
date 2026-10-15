@@ -17,7 +17,7 @@ for line in sys.stdin:
 
 def run(root,symbol,output):
  tick=time.monotonic()
- cmd=['bwrap','--die-with-parent','--unshare-net','--ro-bind','/usr','/usr','--ro-bind','/lib','/lib','--ro-bind','/lib64','/lib64','--ro-bind',str(root/'.venv'),'/env','--ro-bind',str(Path.home()/'.local/lib/python3.9/site-packages'),'/deps','--ro-bind',str(root/'artifacts/models'),'/bundle','--ro-bind',str(root/f'artifacts/full-replay-v1/{symbol}_history.json'),'/history.json','--proc','/proc','--dev','/dev','--tmpfs','/tmp','--chdir','/tmp','--setenv','PYTHONPATH','/env/lib/python3.9/site-packages:/deps','/env/bin/python','-c',CHILD,symbol]
+ cmd=['bwrap','--die-with-parent','--unshare-net','--ro-bind','/usr','/usr','--ro-bind','/lib','/lib','--ro-bind','/lib64','/lib64','--ro-bind',str(root/'.venv'),'/env','--ro-bind',str(Path.home()/'.local/lib/python3.9/site-packages'),'/deps','--ro-bind',str(root/'artifacts/models'),'/bundle','--ro-bind',str(root/f"{os.environ.get('H1_REFERENCE', 'artifacts/full-replay-v1')}/{symbol}_history.json"),'/history.json','--proc','/proc','--dev','/dev','--tmpfs','/tmp','--chdir','/tmp','--setenv','PYTHONPATH','/env/lib/python3.9/site-packages:/deps','/env/bin/python','-c',CHILD,symbol]
  frame=pd.read_parquet(root/f'artifacts/test_input/{symbol}.parquet');records=[]
  for r in frame.to_dict('records'):
   for k in ['datetime','trade_date']:r[k]=pd.Timestamp(r[k]).isoformat()
@@ -25,7 +25,7 @@ def run(root,symbol,output):
  proc=subprocess.run(cmd,input='\n'.join(records)+'\n',text=True,capture_output=True,timeout=600,env=dict(os.environ,OMP_NUM_THREADS='1',MKL_NUM_THREADS='1',OPENBLAS_NUM_THREADS='1',NUMEXPR_NUM_THREADS='1'))
  (output/f'{symbol}.stderr.log').write_text(proc.stderr)
  if proc.returncode:raise RuntimeError(f'{symbol}: isolation exit {proc.returncode}: {proc.stderr[-1000:]}')
- actual=[json.loads(x) for x in proc.stdout.splitlines()];ref=pd.read_parquet(root/f'artifacts/full-replay-v1/{symbol}_predictions.parquet')
+ actual=[json.loads(x) for x in proc.stdout.splitlines()];ref=pd.read_parquet(root/f"{os.environ.get('H1_REFERENCE', 'artifacts/full-replay-v1')}/{symbol}_predictions.parquet")
  assert len(actual)==len(frame)
  for model in ['shampoo_e5','adam_e6','shampoo_e5_half0.5','adam_e6_half0.5']:
   assert list(ref[model])==[r[model] for r in actual],model

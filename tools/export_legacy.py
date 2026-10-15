@@ -37,7 +37,7 @@ def export(source, output, symbols, months):
         with open(regpath,'rb') as f:regs=pickle.load(f)
         np.savez_compressed(dest/'aux_ecdf.npz',**{f'{j}__{clock}':v for j,r in enumerate(regs) for clock,v in r.values.items()})
         # These are fixed mappings/parameters only, not prediction-day observations.
-        cache=c.CONTROL/'source_cache'/symbol/'test';meta=pd.read_parquet(cache/'meta.parquet')
+        cache=c.CONTROL/'source_cache'/symbol/'fit';meta=pd.read_parquet(cache/'meta.parquet')
         arrays=[np.load(cache/f'arg{j}.npy',mmap_mode='r') for j in range(10)]
         mapping={}
         for clock,ix in meta.groupby('clock_slot_id',sort=False).indices.items():

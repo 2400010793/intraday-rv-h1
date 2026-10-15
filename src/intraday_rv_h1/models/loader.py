@@ -4,7 +4,7 @@ from .archived.monthly_demo_attention import MonthlyDemoHARNet
 from .archived.structure_ablation_attention import apply_ablation
 
 
-def build_model(factory, weights, seed):
+def build_model(factory, weights, seed, *, training=False):
     model = MonthlyDemoHARNet(
         factory['config'], seed, factory['limits'], factory['descriptors'],
         factory['variant'], factory['reference_state'],
@@ -17,4 +17,4 @@ def build_model(factory, weights, seed):
         return_state_width=3, return_input='rank', price_column=0)
     apply_ablation(model, 'linear_decoder_tanh', output_seed=seed)
     model.load_state_dict(weights, strict=True)
-    return model.eval().requires_grad_(False)
+    return model.train() if training else model.eval().requires_grad_(False)

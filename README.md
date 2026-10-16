@@ -2,7 +2,82 @@
 
 六标的 `IF/IH/IC/IM/159915/588000`，预测下一交易日同一**物理时点**的 `Rvol1D`。模型是已有的 HARNet-SVJ + 15/30三时点加权通道 + 原生DS15/1H/5–15前缀 + 百分位及收益/价格交互 + attention。
 
-本仓库只迁移已有模型，**没有重新训练**。Shampoo epoch5、Adam epoch6均使用固定五seed `7,17,27,37,47` 的预测平均，不挑seed。保留原始预测及半衰期0.5行的平滑版本。模型来自反复查看过Test的研究过程，属于回顾性研究资产，不宣称新一次未触碰测试集的结论。
+本仓库包含两套明确分开的资产：旧模型冻结迁移，以及2026-10-15完成提交、2026-10-16完成的开盘共享训练。以下旧接口示例默认使用冻结迁移包；最新训练包的格式与加载限制见下一节。Shampoo epoch5、Adam epoch6均使用固定五seed `7,17,27,37,47` 的预测平均，不挑seed。保留原始预测及半衰期0.5行的平滑版本。模型来自反复查看过Test的研究过程，属于回顾性研究资产，不宣称新一次未触碰测试集的结论。
+
+
+## 当前代码与两个 Release：先选择正确资产
+
+代码已上传本私有仓库的 `main`。本次训练实现的远端提交为 `9c84a44e93a1de7a9c5bb85c0f35f5fa79ec9e33`；后续文档提交不改变已完成训练的源码快照。运行时使用捕获的源码及SHA256，而不是只依赖一个Git提交号。研究训练依赖原研究仓库的归档输入与拟合实现；独立推理模块不依赖原仓库。不能把离线训练命令理解为从数据库下载后即可独立重训。
+
+| Release标签 | 内容 | 加载方式与状态 |
+|---|---|---|
+| `h1-frozen-v0.1.0` | 旧模型冻结迁移，20个月、双优化器、五seed | 下文 `load_bundle` / CLI 示例使用此格式；私有草稿研究包 |
+| `h1-shared-monthly-20261015-v1` | 三时点15/30动态通道＋百分位交互，negative80交叉删除；新增开盘共同拟合、共同训练 | 六个分标的压缩包，epoch0～6全部保留；**不是旧CLI可直接读取的bundle格式**，先按下述方式检查和加载网络 |
+
+最新模型保留HARNet-SVJ卷积、原始完整前向图与损失。每个标的单独训练一个跨所有clock共享参数的模型，不设置独立开盘专家。原生DS15、1H、前缀、收益/价格状态保留；negative80数值保留，只删除对应百分位交叉。两种优化器均6完整epoch，seed固定为7、17、27、37、47，Adam学习率1e-5、batch128；Shampoo使用attention矩阵分区及Adam范数graft，其余参数Adam。卷积保持原训练配置，不是轻量替代模型。
+
+20个拟合月份为2025-02至2026-09，共1200条轨迹，8400个epoch状态。固定展示口径为Adam6/Shampoo5，不能在Test上逐月挑最优epoch。每月标准化/ECDF复用原拟合资产，原分阶段Ridge初始化加入因果开盘样本后重新拟合；训练标签必须在该月实际cutoff前成熟。
+
+开盘期货09:29、ETF09:25映射首个09:30冻结clock参数，不取当天09:30观察值。时间编码分别为期货 `[2.827289813,-0.512988068,-0.495867769]`，ETF `[2.807688052,-0.497885370,-0.495815900]`，位置输入为1。两时点因此共享时间编码，不能称为实际开盘时钟重新编码。
+
+### 获取最新训练包
+
+需要已被授权的GitHub账号并完成 `gh auth login`。Release是草稿，只有有权限的协作者可以下载；不能以匿名下载失败判断资产不存在。
+
+```bash
+gh release view h1-shared-monthly-20261015-v1 --repo 2400010793/intraday-rv-h1
+gh release download h1-shared-monthly-20261015-v1 \
+  --repo 2400010793/intraday-rv-h1 --dir artifacts/shared-release
+cd artifacts/shared-release
+sha256sum -c h1-shared-monthly-IF.tar.gz.sha256
+mkdir -p ../shared/IF
+tar -xzf h1-shared-monthly-IF.tar.gz -C ../shared/IF
+cd ../..
+```
+
+其他五标的用对应文件名，逐包验证校验文件。压缩包根目录含 `manifest.json` 和标的目录；不要将六个manifest覆盖到同一路径。`archive_index.json`提供压缩包SHA256，`model_index.json`提供每个权重的标的、月份、优化器、seed、epoch、相对路径、SHA256和最晚训练标签时间。包内manifest给出全部依赖文件哈希。
+
+每个标的包包括：
+
+- `SYMBOL/factory.pt`：网络构造参数、冻结参考与非持久化百分位表；仅加载可信的私有资产。
+- `SYMBOL/transform.json`、`clock_registry.json`、`aux_ecdf.npz`：特征标准化、冻结clock映射和辅助ECDF。
+- `SYMBOL/YYYY-MM/initializer.npz`：本次开盘共享Ridge初始化；`original_ridge.npz`只保留旧拟合来源，不能替代新初始化。
+- `original_policy_normalization.json`、`original_policy_ecdf.npz`：每月冻结策略变换；`original_fit_audit.json`为原拟合来源。
+- `SYMBOL/YYYY-MM/OPTIMIZER/seedN/epoch_00.pt`到`epoch_06.pt`：可移植模型state_dict，前向重建时必须使用同包factory。
+
+加载一个网络的示例（不是完整流式服务）：
+
+```python
+from pathlib import Path
+import torch
+from intraday_rv_h1.models.loader import build_model
+base = Path('artifacts/shared/IF/IF')
+factory = torch.load(base / 'factory.pt', map_location='cpu', weights_only=True)
+weights = torch.load(base / '2026-08/shampoo_adam_graft/seed7/epoch_05.pt',
+                     map_location='cpu', weights_only=True)
+network = build_model(factory, weights, seed=7)
+# network(*args) 接收13个与原归档合同一致的输入张量。
+# args不能用目标、benchmark或完整未来日表生成；shape/语义见
+# research/original_shared_inputs.py 与 inference/engine.py。
+```
+
+最新训练包尚未转换为旧 `Predictor` manifest合同，因此不要把旧 `stream --bundle` 命令直接指向它。网络重载与归档输入前向已校验；“新训练权重＋独立进程＋原始生产行”的整套隔离验收还没有为此新Release重跑。旧迁移包的逐行验收不能自动转移为新Release验收。完整优化器检查点保留在训练机器本地；Release只含可移植模型权重与必要拟合资产，不含优化器状态、原始市场数据或历史状态。
+
+### 实际评价范围与指标单位
+
+新任务覆盖每标的362个完整交易日，日内期货243/ETF240行，总计525624行，全部有限正值。它不是旧Test全部381天：每月从训练标签cutoff之后的第一个完整交易日开始，缺少19个原评价日。补齐这些日需要使用此前已生效的模型，不能提前使用本月权重。
+
+同旧模型严格对齐523316条键和目标，先平均五seed预测、后计算误差，未平滑。MSE原始值乘100展示：Adam6为0.546017（旧同样本0.546293），Shampoo5为0.546740（旧同样本0.546831），benchmark为0.621145。全时点新样本MSE×100分别为0.546224、0.546935。不能拿不同日期的0.553直接比较。
+
+### 泄露边界：通过项与尚未通过项
+
+- 原有拟合行、补充开盘标签与实际cutoff应逐月检查；Test预测origin必须晚于训练最大target_datetime。月份标签不是权重生效时间。2026-08权重最晚标签为2026-08-03 09:30:10，不能拿去预测该时间之前的记录。
+- 推理只使用当前生产行与此前历史；目标/benchmark属于离线评价。ECDF、标准化不在推理更新。仅历史窗口按时间更新。
+- 已有旧迁移测试覆盖前缀不变、忽略标签、预测步骤禁止文件读取、状态恢复和价格/收益响应。新训练的1200条轨迹均完成最后一轮严格state_dict重载，结果完全相同；这证明保存可重现，不等于完整泄露审计。
+- 上游ret、ttime、rvol字段没有历史发布时间/修订轨迹；无法排除快照回填或ttime全样本标定。仅凭rvol-demo的尾随公式不能解决此问题。
+- 本研究反复查看过Test，结果为回顾性比较；不能作为未触碰Test上的独立显著性证据。
+
+**结论：当前没有依据宣称“任何环节都不存在信息泄露”。两个Release均保持私有草稿研究状态；数据提供方point-in-time证据与新包端到端隔离验收完成前，不标为生产验收通过。**
 
 ## 运行边界
 
